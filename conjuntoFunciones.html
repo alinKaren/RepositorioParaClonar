@@ -1,0 +1,101 @@
+
+<meta charset="UTF-8">
+
+<h1> Deafíos de Listas </h1>
+<h2> Lógica de programación: explorar funciones y listas</h2>
+
+<script> 
+        // 1. Obtener cantidad de elementos con validación
+        let numeroElementos = prompt("Cuál es la cantidad de elementos?");
+
+        while (numeroElementos === null || numeroElementos.trim() === "" || isNaN(numeroElementos)) {
+    	alert("Ingrese un valor válido.")
+    	numeroElementos =prompt("Cuál es la cantidad de elementos...");
+        }
+        numeroElementos = parseInt(numeroElementos);
+
+     // 2. Función para llenar la lista
+     function obtenerlistaValores(cantidad){	
+    	   let listaValores = [];
+    	   for(let i = 1; i<=cantidad; i++){
+    		let valor = parseFloat(prompt(`Indique el valor del elemento ${i}:`));
+
+    		while(isNaN(valor)){
+    			valor = parseFloat(prompt("¡Dato inválido!, Indique el valor del elemento " + i));
+    		}
+	//Guardamos los valores en el arreglo
+    		listaValores.push(valor);
+    	}
+    	return listaValores;
+    }
+
+    // 3. Función para calcular mayor y menor
+     function mayorMenor(lista) {
+    // Si la lista está vacía, manejamos el error
+     if (lista.length === 0) return { max: null, min: null };//Verifica si la lista está vacía (es decir, el usuario dijo que quería 0 elementos).
+
+
+      let numeroMayor =-Infinity;//Es tan PEQUEÑO que cualquier número que ingrese el usuario será mayor
+      let numeroMenor=Infinity;//Cualquier número del usuario será menor que él, convirtiéndose en el primer "menor" oficial.
+
+    	for(let i = 0; i<lista.length; i++){
+    		let valorActual = lista[i];
+
+    		if (valorActual>numeroMayor){
+    			numeroMayor=valorActual;
+    		}
+    		if (valorActual<numeroMenor){
+    			numeroMenor=valorActual;	
+    		} 
+    	}
+    	return{max: numeroMayor,min:numeroMenor};
+    }
+
+
+
+
+        function bubbleSort(lista) { // 1. Recibe la 'lista' genérica
+        let n = lista.length;    // 2. Mide esa 'lista'
+        let copia = [...lista];  // 3. Crea una copia para no alterar la original
+
+
+        for (let  i = 0; i<n-1; i++){
+            for (let j= 0;  j<n-1-i; j++){ //El "- i" evita revisar lo que ya está ordenado
+                if (copia[j] >copia[j+1]){
+                    // Intercambio de valores
+                   let aux = copia [j]; 
+                    copia [j] = copia [j+1];
+                    copia [j+1] = aux;  
+                }
+            }
+        }
+        return copia; //4. Devuelve el resultado ordenado
+    }
+
+
+    function calcularPromedio(lista){
+      let sumaAcumulada = 0; 	
+    	for(let i=0; i<lista.length; i++){
+    		sumaAcumulada = sumaAcumulada + lista[i];
+    	}
+    	let promedio = sumaAcumulada/lista.length;
+    	return{promedio,sumaAcumulada};
+    }
+
+ // --- EJECUCIÓN ---
+     let misNumeros = obtenerlistaValores(numeroElementos);
+     // Ahora sí, procesamos esa lista que ya tiene datos  2.Pasas 'misNumeros' a la herramienta de Mayor/Menor
+     let resultadosMinMax = mayorMenor(misNumeros);
+     let resultadosPromedio = calcularPromedio(misNumeros);
+     let listaOrdenada = bubbleSort(misNumeros);
+
+         alert("La lista es: " + misNumeros.join(", ") +
+         "\nLista ordenada: " + listaOrdenada.join(", ") +// El El método .join() solo funciona en arreglos.
+    	 "\nNúmero menor: " + resultadosMinMax.min+
+    	 "\nNúmero mayor: " + resultadosMinMax.max+
+         "\nSuma total: " + resultadosPromedio.sumaAcumulada +
+         "\nPromedio: " + resultadosPromedio.promedio.toFixed(2));
+
+
+
+</script>

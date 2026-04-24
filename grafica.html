@@ -1,0 +1,37 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var serie2009 = [6, 47, 41, 3, 3];
+    var serie2019 = [81, 9, 3, 3, 4];
+
+    function dibujarRectangulo(x, y, base, altura, color) {
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+
+        pincel.fillStyle=color;
+        pincel.fillRect(x,y, base, altura);
+        pincel.strokeStyle="black";
+        pincel.strokeRect(x,y, base, altura);
+    }
+
+    function escribirTexto(x , y, texto) {
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+
+        pincel.font="15px Georgia";
+        pincel.fillStyle="black";
+        pincel.fillText(texto, x, y);    
+    }
+
+function dibujarGrafica(){
+    dibujarRectangulo(350,50,250,40,"blue");
+    dibujarRectangulo(350,91,250,150,"green");
+    dibujarRectangulo(350,240,250,150,"yellow");
+    dibujarRectangulo(350,390,250,6,"red");
+    dibujarRectangulo(350,394,250,6,"gray");
+}
+
+dibujarGrafica();
+
+</script>

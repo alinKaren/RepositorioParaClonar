@@ -1,0 +1,49 @@
+<canvas width="600" height="400"> </canvas>
+
+<script>
+     var colores = ["green","blue"];
+     var pantalla = document.querySelector("canvas");
+     var pincel = pantalla.getContext("2d");    
+     pincel.fillStyle = "grey";
+     pincel.fillRect(0,0,600,400); 
+
+     function dibujarCirculo(evento){
+      
+        evento.preventDefault();  // "Navegador, no abras tu menú de opciones, yo voy a usar este clic para mi Canvas"
+
+        var x=evento.pageX-pantalla.offsetLeft;
+        var y=evento.pageY-pantalla.offsetTop;    
+
+
+   if (evento.button === 0) {//button: Usamos esta propiedad para preguntar "¿Qué botón se presionó?"
+        pincel.fillStyle = colores[0]; // Azul para el izquierdo
+    } else if (evento.button === 2) {
+        pincel.fillStyle = colores[1]; // Verde para el derecho
+    }
+        
+        pincel.beginPath();
+        pincel.arc(x,y,10,0,2*Math.PI);      
+        pincel.fill();
+
+          console.log("Clic en: " + x + "," + y + " con botón: " + evento.button);  
+     }
+   
+     pantalla.onclick = dibujarCirculo; //click izquierdo
+     pantalla.oncontextmenu = dibujarCirculo;// click derecho
+
+     /*
+     function alterarColor(evento) {
+       var x = evento.pageX - pantalla.offsetLeft;
+        var y = evento.pageY - pantalla.offsetTop;    
+        pincel.fillStyle = "green";
+        pincel.beginPath();
+        pincel.arc(x,y,10,0,2);
+        pincel.fill();
+        console.log(x + "," + y);  
+        return false;
+    }*/
+
+</script> 
+
+
+

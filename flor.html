@@ -1,0 +1,67 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+    pincel.fillStyle = "lightgray";
+    pincel.fillRect(0, 0, 600, 400);
+
+    function dibujarCirculo(x, y, radio, color) {
+
+
+        pincel.fillStyle = color;
+        pincel.beginPath();
+        pincel.arc(x, y, radio, 0, 2*3.14);
+        pincel.fill();
+    }
+function dibujarCuadrado() {
+
+
+   for (var x=250; x<=350; x=x+50){
+   for (var y=150; y<=250; y=y+50){
+   dibujarCirculo(x,y,18,"red");
+   }
+ }
+}
+
+ function dibujarFlorRoja() {
+
+       for (var x=250; x<=350; x=x+50){
+       dibujarCirculo(x,200,18,"red");
+}
+    for (var y=150; y<=250; y=y+50){
+       dibujarCirculo(300,y,18,"red");
+}
+}
+
+
+
+    function dibujarFlor() {
+  
+
+   dibujarCirculo(250-20,200,18,"orange");
+   dibujarCirculo(300,200,18,"red");
+   dibujarCirculo(350+20,200,18,"black");
+
+   dibujarCirculo(300,150-20,18,"yellow");
+   dibujarCirculo(300,250+20,18,"blue");
+
+
+}
+
+      function limpieza() {
+    pincel.fillStyle = "lightgray";
+    pincel.fillRect(0, 0, 600, 400);
+}
+
+ dibujarFlorRoja();
+ dibujarCuadrado();
+ limpieza();
+ dibujarFlor();
+  limpieza();
+  dibujarCirculo(300,150,40,"purple");
+    limpieza();
+  dibujarFlor();
+
+</script>
