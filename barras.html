@@ -9,7 +9,7 @@
 
         pincel.fillStyle=color;
         pincel.fillRect(x,y, base, altura);
-        pincel.strokeStyle= (0, 0, 0);// o "black";
+        pincel.strokeStyle="black";
         pincel.strokeRect(x,y, base, altura);
     }
 
@@ -42,8 +42,10 @@
     }
 
     var colores = ["blue","green","yellow", "red","gray"];
+
     var serie2009 = [6,47,41,3,12];
     var serie2019 = [81,9,3,3,16];
+
 
     dibujarBarra(50, 50, serie2009, colores, "2009");
 
